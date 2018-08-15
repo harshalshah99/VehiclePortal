@@ -9,7 +9,7 @@ export const BASE_API_URL='http://54.245.75.115/services/';
 export const MSG_SUCCESS='Operation completed successfully.';
 export const MSG_FAIL='Something went wrong.';
 export const IN='emt123';
-
+export const isUserLogin=false;
 
 export function GETMSG_SAVE_SUCCESS(msg: string) {
     return msg + " saved successfully";

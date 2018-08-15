@@ -3,12 +3,14 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import * as global from '../../shared/global'
+import { ParentChildCommService } from './../../shared/ParentChildCommService';
 
 
 @Component({
   selector: 'app-user-login',
   templateUrl: './user-login.component.html',
-  styleUrls: ['./user-login.component.css']
+  styleUrls: ['./user-login.component.css'],
+  providers: [ParentChildCommService]
 })
 export class UserLoginComponent implements OnInit {
 
@@ -16,7 +18,7 @@ export class UserLoginComponent implements OnInit {
    
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private parentChildCommService: ParentChildCommService) { }
 
   onSubmit() {
     var url = global.BASE_API_URL + "auth/login";
@@ -30,7 +32,9 @@ export class UserLoginComponent implements OnInit {
       
       if(response && response.status == "success")
       {
+        debugger;
         localStorage.setItem("currentUser", JSON.stringify(data));
+        this.parentChildCommService.setLoginPreferences();
       }
 
       console.log(response);
@@ -46,7 +50,6 @@ export class UserLoginComponent implements OnInit {
       'Something bad happened; please try again later.');
   };
   ngOnInit() {
-
 
   }
 

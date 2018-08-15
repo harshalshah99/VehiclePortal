@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ParentChildCommService } from './shared/ParentChildCommService';
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [ParentChildCommService]
 })
 export class AppComponent implements OnInit {
 
-  isUserLogin = false;
+  //isUserLogin = false;
   
-  constructor() { }
+  constructor(private parentChildCommService: ParentChildCommService) { }
 
   ngOnInit() {
     this.setLoginPreferences();
@@ -21,11 +25,13 @@ export class AppComponent implements OnInit {
   }
 
   setLoginPreferences(){
-    if (localStorage.getItem('currentUser')) {
-      this.isUserLogin = true;
-    }
-    else{
-      this.isUserLogin = false;
-    }
+    this.parentChildCommService.setLoginPreferences();
+    // debugger;
+    // if (localStorage.getItem('currentUser')) {
+    //   this.isUserLogin = true;
+    // }
+    // else{
+    //   this.isUserLogin = false;
+    // }
   }
 }
