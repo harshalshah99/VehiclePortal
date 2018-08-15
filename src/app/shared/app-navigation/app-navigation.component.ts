@@ -11,17 +11,16 @@ export class AppNavigationComponent implements OnInit {
 
   isUserLogin = false;
 
-  constructor(private parentChildCommService: ParentChildCommService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.parentChildCommService.isUserLogin.subscribe(message => this.isUserLogin = message);
-    this.parentChildCommService.setLoginPreferences();
-    
+    ParentChildCommService.isUserLogin.subscribe(message => this.isUserLogin = message);
+    ParentChildCommService.setLoginPreferences();
   }
 
   logout(){
     localStorage.removeItem('currentUser');
-    this.parentChildCommService.setLoginPreferences();
+    ParentChildCommService.setLoginPreferences();
   }
 
 

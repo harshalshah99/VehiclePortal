@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
 
   //isUserLogin = false;
   
-  constructor(private parentChildCommService: ParentChildCommService) { }
+  constructor() { }
 
   ngOnInit() {
     this.setLoginPreferences();
@@ -25,13 +25,6 @@ export class AppComponent implements OnInit {
   }
 
   setLoginPreferences(){
-    this.parentChildCommService.setLoginPreferences();
-    // debugger;
-    // if (localStorage.getItem('currentUser')) {
-    //   this.isUserLogin = true;
-    // }
-    // else{
-    //   this.isUserLogin = false;
-    // }
+    ParentChildCommService.setLoginPreferences();
   }
 }

@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import * as global from '../../shared/global'
 import { ParentChildCommService } from './../../shared/ParentChildCommService';
-
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-login',
@@ -18,37 +19,36 @@ export class UserLoginComponent implements OnInit {
    
   }
 
-  constructor(private http: HttpClient,private parentChildCommService: ParentChildCommService) { }
+
+  constructor(private http: HttpClient,private spinner: NgxSpinnerService,private toastr: ToastrService) {
+   
+ }
 
   onSubmit() {
     var url = global.BASE_API_URL + "auth/login";
 
+    this.spinner.show();
     this.http.post(url, this.loginModel)
     .pipe(
-      catchError(this.handleLoginError)
+      catchError((err, caught) => {
+        this.spinner.hide();
+        this.toastr.error('Login failed.');
+        return throwError(
+          'Something bad happened; please try again later.');
+      })
     )
     .subscribe((data: Response) => {
-      var response = JSON.parse(JSON.stringify(data));
-      
+      this.spinner.hide();
+      this.toastr.success('Login Successful');
+      var response = JSON.parse(JSON.stringify(data));    
       if(response && response.status == "success")
       {
-        debugger;
         localStorage.setItem("currentUser", JSON.stringify(data));
-        this.parentChildCommService.setLoginPreferences();
+        ParentChildCommService.setLoginPreferences();
       }
-
-      console.log(response);
     });
   }
 
-  private handleLoginError(error: HttpErrorResponse) {
-   
-    alert('Fail');
-
-    //return an observable with a user-facing error message
-    return throwError(
-      'Something bad happened; please try again later.');
-  };
   ngOnInit() {
 
   }

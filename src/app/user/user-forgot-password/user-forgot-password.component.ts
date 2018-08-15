@@ -31,8 +31,6 @@ export class UserForgotPasswordComponent implements OnInit {
       {
           alert('Success');
       }
-
-      console.log(response);
     });
   }
 

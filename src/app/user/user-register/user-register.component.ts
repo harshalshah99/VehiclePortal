@@ -31,8 +31,6 @@ export class UserRegisterComponent implements OnInit {
       {
           alert('Success');
       }
-
-      console.log(response);
     });
   }
 
