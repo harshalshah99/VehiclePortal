@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { UserForgotPasswordComponent } from './user/user-forgot-password/user-forgot-password.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
+import { AppNavigationComponent } from './shared/app-navigation/app-navigation.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { UserLoginComponent } from './user/user-login/user-login.component';
     AppComponent,
     UserForgotPasswordComponent,
     UserLoginComponent,
-    UserRegisterComponent
+    UserRegisterComponent,
+    AppNavigationComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

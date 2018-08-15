@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import * as global from '../../shared/global'
 
 
 @Component({
@@ -12,29 +13,24 @@ import { catchError, retry } from 'rxjs/operators';
 export class UserLoginComponent implements OnInit {
 
   loginModel = {
-    "email": "test@test.com",
-    "password": "test123"
+   
   }
 
   constructor(private http: HttpClient) { }
 
-  submitted = false;
-
   onSubmit() {
-    this.submitted = true;
-    var url = "http://54.245.75.115/services/auth/login";
+    var url = global.BASE_API_URL + "auth/login";
 
     this.http.post(url, this.loginModel)
     .pipe(
       catchError(this.handleLoginError)
     )
     .subscribe((data: Response) => {
-      var response = data;
-      debugger;
-
-      if(response && response.status.toString() == "success")
+      var response = JSON.parse(JSON.stringify(data));
+      
+      if(response && response.status == "success")
       {
-          alert('Success');
+        localStorage.setItem("currentUser", JSON.stringify(data));
       }
 
       console.log(response);

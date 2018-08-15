@@ -1,1 +1,10 @@
-<router-outlet></router-outlet>
+<app-navigation (setLoginPreferencesBase)="setLoginPreferences()" [isUserLogin]="isUserLogin">
+</app-navigation>
+
+<div class="container margin-top20">
+  <router-outlet></router-outlet>
+</div>
+
+<footer class="main-footer">
+  Copyright © Vehicle Portal 2018
+</footer>

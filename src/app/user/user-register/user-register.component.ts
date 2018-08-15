@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import * as global from '../../shared/global'
 
 @Component({
   selector: 'app-user-register',
@@ -16,25 +17,20 @@ export class UserRegisterComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
 
-  submitted = false;
-
   onSubmit() {
-    debugger;
-    this.submitted = true;
-    var url = "http://54.245.75.115/services/user/create_user";
+    var url = global.BASE_API_URL + "user/create_user";
 
     this.http.post(url, this.userRegistrationModel)
     .pipe(
       catchError(this.handleLoginError)
     )
     .subscribe((data: Response) => {
-      var response = data;
+      var response = JSON.parse(JSON.stringify(data));
     
-
-      // if(response && response.result.toString() == "success")
-      // {
-      //     alert('Success');
-      // }
+      if(response && response.result == "success")
+      {
+          alert('Success');
+      }
 
       console.log(response);
     });

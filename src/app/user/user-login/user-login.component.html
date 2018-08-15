@@ -15,7 +15,12 @@
         <input type="password" class="form-control" id="password" [(ngModel)]="loginModel.password" name="password" required maxlength="100">
       </div>
 
-      <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">Login</button>
+      
+      <div class="form-group">
+        <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">Login</button>
+        <br/><br/>
+        <a routerLink="/UserForgotPassword">Forgot Password?</a>
+      </div>
 
     </form>
   </div>
