@@ -3,7 +3,7 @@
     User Registration
   </div>
   <div class="card-body">
-    <form (ngSubmit)="onSubmit()" #userRegistrationForm="ngForm">
+    <form (ngSubmit)="onSubmit()" #userRegistrationForm="ngForm" ngNativeValidate>
 
       <div class="form-group">
         <label for="first_name">First Name</label>
@@ -33,7 +33,7 @@
           maxlength="200">
       </div>
 
-      <button type="submit" class="btn btn-success" [disabled]="!userRegistrationForm.form.valid">Register</button>
+      <button type="submit" class="btn btn-success" >Register</button>
 
       
     </form>

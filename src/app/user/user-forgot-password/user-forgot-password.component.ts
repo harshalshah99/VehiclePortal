@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import * as global from '../../shared/global'
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-forgot-password',
@@ -15,33 +18,33 @@ export class UserForgotPasswordComponent implements OnInit {
     
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private spinner: NgxSpinnerService,private toastr: ToastrService,
+    private router: Router) {
+   
+ }
+
 
   onSubmit() {
     var url = global.BASE_API_URL + "auth/forgot";
-
+    this.spinner.show();
     this.http.post(url, this.forgotPasswordModel)
     .pipe(
-      catchError(this.handleLoginError)
+      catchError((err, caught) => {
+        debugger;
+        this.spinner.hide();
+        this.toastr.error(err.error);
+        return throwError(
+          'Something bad happened; please try again later.');
+      })
     )
     .subscribe((data: Response) => {
       var response = JSON.parse(JSON.stringify(data));
     
-      if(response && response.result == "success")
-      {
-          alert('Success');
-      }
+      this.spinner.hide();
+      this.toastr.success('Reset Successful.');
     });
   }
 
-  private handleLoginError(error: HttpErrorResponse) {
-   
-    alert('Fail');
-
-    //return an observable with a user-facing error message
-    return throwError(
-      'Something bad happened; please try again later.');
-  };
   ngOnInit() {
 
 

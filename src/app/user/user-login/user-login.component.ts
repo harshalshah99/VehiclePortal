@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
@@ -20,7 +21,8 @@ export class UserLoginComponent implements OnInit {
   }
 
 
-  constructor(private http: HttpClient,private spinner: NgxSpinnerService,private toastr: ToastrService) {
+  constructor(private http: HttpClient,private spinner: NgxSpinnerService,private toastr: ToastrService,
+    private router: Router) {
    
  }
 
@@ -32,7 +34,7 @@ export class UserLoginComponent implements OnInit {
     .pipe(
       catchError((err, caught) => {
         this.spinner.hide();
-        this.toastr.error('Login failed.');
+        this.toastr.error(err.error.reason);
         return throwError(
           'Something bad happened; please try again later.');
       })
@@ -46,6 +48,7 @@ export class UserLoginComponent implements OnInit {
         localStorage.setItem("currentUser", JSON.stringify(data));
         ParentChildCommService.setLoginPreferences();
       }
+      this.router.navigate(['']);
     });
   }
 
