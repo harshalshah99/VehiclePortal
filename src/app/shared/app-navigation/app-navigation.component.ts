@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class AppNavigationComponent implements OnInit {
 
   isUserLogin = false;
+  currentUserDetails = ParentChildCommService.currentUserDetails;
 
   constructor(private router: Router) { }
 

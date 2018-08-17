@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark static-top" style="background-color: #5b5a98;">
+<nav class="navbar navbar-expand navbar-dark bg-dark static-top" style="background-color: #414763!important;">
 
   <a class="navbar-brand" href="#">Vehicle Portal</a>
   <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
@@ -21,10 +21,24 @@
               </li>
           </ul>
           <ul class="navbar-nav mr-auto" [hidden]="!isUserLogin">
-              <li class="nav-item">
+            <!-- <li class="nav-item">
+              {{currentUserDetails.user.first_name}} {{currentUserDetails.user.last_name}}
+            </li>  
+            <li class="nav-item">
                 <a class="nav-link" (click)="logout()">Logout</a>
-              </li>
+              </li> -->
+
+              <li class="nav-item dropdown no-arrow mx-1 active">
+                  <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-user-circle fa-fw"></i> {{currentUserDetails.user.first_name}}
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
+                    
+                    <a class="dropdown-item cursor-pointer" (click)="logout()">Logout</a>
+                  </div>
+                </li>
           </ul>
+          
     </form>
   </div>
 </nav>

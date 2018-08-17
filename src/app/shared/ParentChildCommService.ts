@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 export class ParentChildCommService {
 
   static isUserLogin = new Subject<boolean>();
+  static currentUserDetails = {};
 
   // Service message commands
   static setUserLogin(val: boolean) {
@@ -15,9 +16,12 @@ export class ParentChildCommService {
   static setLoginPreferences() {
     if (localStorage.getItem('currentUser')) {
       this.setUserLogin(true);
+      debugger;
+      this.currentUserDetails = JSON.parse(localStorage.getItem('currentUser'));
     }
     else {
       this.setUserLogin(false);
+      this.currentUserDetails = {};
     }
   }
 
