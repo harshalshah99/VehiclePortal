@@ -1,12 +1,28 @@
 <app-navigation>
 </app-navigation>
-
-<div class="container margin-top20">
-  <router-outlet>
-  </router-outlet>
-  <ngx-spinner></ngx-spinner>
+<div id="wrapper">
+  <app-side-navigation></app-side-navigation>
+  <div id="content-wrapper">
+    <div class="container-fluid">
+      <router-outlet>
+      </router-outlet>
+      <ngx-spinner></ngx-spinner>
+    </div>
+  </div>
+  <!-- /.container-fluid -->
+  <!-- Sticky Footer -->
+  <footer class="sticky-footer">
+    <div class="container my-auto">
+      <div class="copyright text-center my-auto">
+        <span>Copyright © Vehicle 2018</span>
+      </div>
+    </div>
+  </footer>
 </div>
+<!-- /.content-wrapper -->
 
-<footer class="main-footer">
-  Copyright © Vehicle Portal 2018
-</footer>
+<!-- /#wrapper -->
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+  <i class="fas fa-angle-up"></i>
+</a>
