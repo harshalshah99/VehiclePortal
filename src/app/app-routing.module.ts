@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { TablesComponent } from './tables/tables.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: UserLoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'tables', component: TablesComponent },
   { path: 'UserForgotPassword', component: UserForgotPasswordComponent },

@@ -11,20 +11,13 @@ import { ParentChildCommService } from './shared/ParentChildCommService';
 })
 export class AppComponent implements OnInit {
 
-  //isUserLogin = false;
+  isUserLogin = false;
   
   constructor() { }
 
   ngOnInit() {
-    this.setLoginPreferences();
-  }
-
-  logout(){
-    localStorage.removeItem('currentUser');
-    this.setLoginPreferences();
-  }
-
-  setLoginPreferences(){
+    ParentChildCommService.isUserLogin.subscribe(message => this.isUserLogin = message);
     ParentChildCommService.setLoginPreferences();
   }
+
 }

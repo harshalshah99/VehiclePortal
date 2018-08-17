@@ -48,7 +48,7 @@ export class UserLoginComponent implements OnInit {
         localStorage.setItem("currentUser", JSON.stringify(data));
         ParentChildCommService.setLoginPreferences();
       }
-      this.router.navigate(['']);
+      this.router.navigate(['/home']);
     });
   }
 

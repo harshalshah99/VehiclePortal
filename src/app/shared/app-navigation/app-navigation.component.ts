@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ParentChildCommService } from './../../shared/ParentChildCommService';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -11,7 +12,7 @@ export class AppNavigationComponent implements OnInit {
 
   isUserLogin = false;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     ParentChildCommService.isUserLogin.subscribe(message => this.isUserLogin = message);
@@ -21,6 +22,7 @@ export class AppNavigationComponent implements OnInit {
   logout(){
     localStorage.removeItem('currentUser');
     ParentChildCommService.setLoginPreferences();
+    this.router.navigate(['/UserLogin']);
   }
 
 
