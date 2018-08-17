@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { ParentChildCommService } from '../ParentChildCommService';
 
+import * as sbaJS from './master-page.js';
+
 @Component({
   selector: 'app-master-page',
   templateUrl: './master-page.component.html',
@@ -14,6 +16,9 @@ export class MasterPageComponent implements OnInit {
 
   ngOnInit() {
     this.setLoginPreferences();
+
+    sbaJS.applySBAdminJS();
+
   }
 
   logout(){

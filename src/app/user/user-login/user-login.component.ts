@@ -20,7 +20,7 @@ export class UserLoginComponent implements OnInit {
    
   }
 
-
+  isUserLogin = false;
   constructor(private http: HttpClient,private spinner: NgxSpinnerService,private toastr: ToastrService,
     private router: Router) {
    
@@ -48,12 +48,17 @@ export class UserLoginComponent implements OnInit {
         localStorage.setItem("currentUser", JSON.stringify(data));
         ParentChildCommService.setLoginPreferences();
       }
-      this.router.navigate(['/home']);
+      location.href = '/home';
     });
   }
 
   ngOnInit() {
+    ParentChildCommService.isUserLogin.subscribe(message => this.isUserLogin = message);
+    ParentChildCommService.setLoginPreferences();
 
+    if(this.isUserLogin){
+      this.router.navigate(['/home']);
+    }
   }
 
 }
