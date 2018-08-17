@@ -15,6 +15,7 @@ import { UserLoginComponent } from './user/user-login/user-login.component';
 import { AppNavigationComponent } from './shared/app-navigation/app-navigation.component';
 import { HomeComponent } from './home/home.component';
 import { SideNavigationComponent } from './shared/side-navigation/side-navigation.component';
+import { TablesComponent } from './tables/tables.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { SideNavigationComponent } from './shared/side-navigation/side-navigatio
     UserRegisterComponent,
     AppNavigationComponent,
     HomeComponent,
-    SideNavigationComponent
+    SideNavigationComponent,
+    TablesComponent
   ],
   imports: [
     BrowserModule,

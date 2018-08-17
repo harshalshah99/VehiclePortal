@@ -37,7 +37,7 @@
               
               "src/assets/sb-admin/vendor/datatables/jquery.dataTables.js",
               "src/assets/sb-admin/vendor/datatables/dataTables.bootstrap4.js",
-              "src/assets/sb-admin/js/sb-admin.min.js",
+              "src/assets/sb-admin/js/sb-admin.js",
               "src/assets/sb-admin/js/demo/datatables-demo.js"
             ]
           },
