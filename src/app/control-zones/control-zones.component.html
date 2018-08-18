@@ -1,0 +1,23 @@
+<div class="card">
+    <div class="card-header">
+        <i class="fa fa-desktop margin-right5" aria-hidden="true"></i> Control Zone
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Radius</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let controlZone of controlZoneData">
+            <td>{{controlZone.name}}</td>
+            <td>{{controlZone.radius}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  </div>

@@ -15,9 +15,10 @@ import { UserLoginComponent } from './user/user-login/user-login.component';
 import { AppNavigationComponent } from './shared/app-navigation/app-navigation.component';
 import { HomeComponent } from './home/home.component';
 import { SideNavigationComponent } from './shared/side-navigation/side-navigation.component';
-import { TablesComponent } from './tables/tables.component';
 import { MasterPageComponent } from './shared/master-page/master-page.component';
 import { SimplePageComponent } from './shared/simple-page/simple-page.component';
+import { DevicesComponent } from './devices/devices.component';
+import { ControlZonesComponent } from './control-zones/control-zones.component';
 
 
 @NgModule({
@@ -29,9 +30,10 @@ import { SimplePageComponent } from './shared/simple-page/simple-page.component'
     AppNavigationComponent,
     HomeComponent,
     SideNavigationComponent,
-    TablesComponent,
     MasterPageComponent,
-    SimplePageComponent
+    SimplePageComponent,
+    DevicesComponent,
+    ControlZonesComponent
   ],
   imports: [
     BrowserModule,
