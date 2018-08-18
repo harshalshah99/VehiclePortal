@@ -24,7 +24,6 @@
             ],
             "styles": [
               "src/assets/sb-admin/vendor/bootstrap/css/bootstrap.min.css",
-              "src/assets/sb-admin/vendor/fontawesome-free/css/all.min.css",
               "src/assets/sb-admin/vendor/datatables/dataTables.bootstrap4.css",
               "src/assets/sb-admin/css/sb-admin.css",
               "src/assets/styles.css",
@@ -37,6 +36,7 @@
               
               "src/assets/sb-admin/vendor/datatables/jquery.dataTables.js",
               "src/assets/sb-admin/vendor/datatables/dataTables.bootstrap4.js",
+              "src/assets/sb-admin/js/fa.js",
               "src/assets/sb-admin/js/sb-admin.js",
               "src/assets/sb-admin/js/demo/datatables-demo.js"
             ]
