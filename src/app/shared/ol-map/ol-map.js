@@ -1,7 +1,7 @@
-export function renderMap(lat,lon){
-  alert('hi');
+export function renderMap(lat,lng){
+  document.getElementById('olMap').innerHTML = null;
 	var iconFeature = new ol.Feature({
-  geometry: new ol.geom.Point(ol.proj.transform([71.0409,20.8235], 'EPSG:4326', 'EPSG:3857'))
+  geometry: new ol.geom.Point(ol.proj.transform([lat,lng], 'EPSG:4326', 'EPSG:3857'))
 });
 
 
@@ -9,7 +9,7 @@ var iconStyle = new ol.style.Style({
   image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
 	 
     opacity: 0.8,
-    src: 'mapmarker.png',
+    src: './../../../assets/images/mapmarker.png',
 	scale: 0.2
   }))
 });
@@ -25,7 +25,7 @@ var vectorLayer = new ol.layer.Vector({
 });
 	
       var map = new ol.Map({
-        target: 'map',
+        target: 'olMap',
         layers: [
           new ol.layer.Tile({
             source: new ol.source.OSM()
@@ -33,7 +33,7 @@ var vectorLayer = new ol.layer.Vector({
 		  vectorLayer
         ],
         view: new ol.View({
-          center: ol.proj.fromLonLat([71.0409,20.8235]),
+          center: ol.proj.fromLonLat([lat,lng]),
           zoom: 10
         })
       });

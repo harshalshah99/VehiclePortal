@@ -3,21 +3,31 @@
         <i class="fa fa-desktop margin-right5" aria-hidden="true"></i> Control Zone
     </div>
     <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
         <div class="table-responsive">
       <table class="table table-bordered">
         <thead>
           <tr>
             <th>Name</th>
             <th>Radius</th>
+            <th>Show on Map</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let controlZone of controlZoneData">
             <td>{{controlZone.name}}</td>
             <td>{{controlZone.radius}}</td>
+            <td><button (click)="renderMap(controlZone.lat,controlZone.lng)" class="btn btn-outline-info">Show on Map</button></td>
           </tr>
         </tbody>
       </table>
     </div>
-  </div>
-  </div>
+</div>
+<div class="col-md-6">
+<app-ol-map></app-ol-map>
+</div>
+</div>
+
+</div>
+</div>

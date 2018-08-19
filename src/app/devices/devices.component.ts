@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, ViewChild  } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
@@ -7,6 +7,7 @@ import * as global from '../shared/global'
 import { ParentChildCommService } from './../shared/ParentChildCommService';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { OlMapComponent } from './../shared/ol-map/ol-map.component';
 
 @Component({
   selector: 'app-devices',
@@ -20,7 +21,7 @@ export class DevicesComponent implements OnInit {
     private router: Router) {
    
  }
-
+ @ViewChild(OlMapComponent) olMap:OlMapComponent;
   ngOnInit() {
     this.getDevices();
   }
@@ -42,9 +43,13 @@ export class DevicesComponent implements OnInit {
       this.spinner.hide();
       var response = JSON.parse(JSON.stringify(data));   
       //this.deviceData = response; 
-      this.deviceData = [{"unique_id":"oSQTrTH","uid":"8eYdkKi","device_type":1,"manufacturer":"motorola","model":"XT1068","os_version":"6.0","os_vendor":"Android","serial_number":"ZX1D63RHJQ","cpu_model":"ARMv7 Processor rev 3 (v7l)","cpu_speed":"1190","cpu_cores":"4","ram_size":"96","imei":"353326063457875","sim_serial_no":"8991000900115066923\n","subscriber_id":"404490190502515","network_operator":"airtel","mac_address":"F8:CF:C5:AA:48:55","active":1,"lost":0,"notifications":0,"lat":null,"lng":null,"in_geofence":0,"geofence_id":null,"last_ping_date":1529000222,"command":"","created_date":1528999573,"updated_date":1530627420,"location_service":0,"network_provider":0,"gps_provider":0},{"unique_id":"oSQTrTH","uid":"8eYdkKi","device_type":1,"manufacturer":"motorola","model":"XT1068","os_version":"6.0","os_vendor":"Android","serial_number":"ZX1D63RHJQ","cpu_model":"ARMv7 Processor rev 3 (v7l)","cpu_speed":"1190","cpu_cores":"4","ram_size":"96","imei":"353326063457875","sim_serial_no":"8991000900115066923\n","subscriber_id":"404490190502515","network_operator":"airtel","mac_address":"F8:CF:C5:AA:48:55","active":1,"lost":0,"notifications":0,"lat":null,"lng":null,"in_geofence":0,"geofence_id":null,"last_ping_date":1529000222,"command":"","created_date":1528999573,"updated_date":1530627420,"location_service":0,"network_provider":0,"gps_provider":0}];
+      //this.deviceData = [{"unique_id":"oSQTrTH","uid":"8eYdkKi","device_type":1,"manufacturer":"motorola","model":"XT1068","os_version":"6.0","os_vendor":"Android","serial_number":"ZX1D63RHJQ","cpu_model":"ARMv7 Processor rev 3 (v7l)","cpu_speed":"1190","cpu_cores":"4","ram_size":"96","imei":"353326063457875","sim_serial_no":"8991000900115066923\n","subscriber_id":"404490190502515","network_operator":"airtel","mac_address":"F8:CF:C5:AA:48:55","active":1,"lost":0,"notifications":0,"lat":null,"lng":null,"in_geofence":0,"geofence_id":null,"last_ping_date":1529000222,"command":"","created_date":1528999573,"updated_date":1530627420,"location_service":0,"network_provider":0,"gps_provider":0},{"unique_id":"oSQTrTH","uid":"8eYdkKi","device_type":1,"manufacturer":"motorola","model":"XT1068","os_version":"6.0","os_vendor":"Android","serial_number":"ZX1D63RHJQ","cpu_model":"ARMv7 Processor rev 3 (v7l)","cpu_speed":"1190","cpu_cores":"4","ram_size":"96","imei":"353326063457875","sim_serial_no":"8991000900115066923\n","subscriber_id":"404490190502515","network_operator":"airtel","mac_address":"F8:CF:C5:AA:48:55","active":1,"lost":0,"notifications":0,"lat":null,"lng":null,"in_geofence":0,"geofence_id":null,"last_ping_date":1529000222,"command":"","created_date":1528999573,"updated_date":1530627420,"location_service":0,"network_provider":0,"gps_provider":0}];
       
       console.log(this.deviceData);
     });
+  }
+
+  renderMap(lat,lng){
+    this.olMap.renderMap(lat,lng);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
@@ -7,6 +7,7 @@ import * as global from '../shared/global'
 import { ParentChildCommService } from './../shared/ParentChildCommService';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { OlMapComponent } from './../shared/ol-map/ol-map.component';
 
 @Component({
   selector: 'app-control-zones',
@@ -21,7 +22,7 @@ export class ControlZonesComponent implements OnInit {
     private router: Router) {
    
  }
-
+ @ViewChild(OlMapComponent) olMap:OlMapComponent;
  ngOnInit() {
   this.getControlZones();
 }
@@ -45,5 +46,9 @@ getControlZones() {
     this.controlZoneData = response; 
     console.log(response);
   });
+}
+
+renderMap(lat,lng){
+  this.olMap.renderMap(lat,lng);
 }
 }

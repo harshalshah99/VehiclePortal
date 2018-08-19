@@ -18,7 +18,7 @@
                   <tr *ngFor="let device of deviceData">
                     <td>{{device.manufacturer}}</td>
                     <td>{{device.model}}</td>
-                    <td>Show on Map</td>
+                    <td><button (click)="renderMap(device.lat,device.lng)" class="btn btn-outline-info">Show on Map</button></td>
                   </tr>
                 </tbody>
               </table>

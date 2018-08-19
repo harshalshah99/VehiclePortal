@@ -11,7 +11,11 @@ export class OlMapComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    rm.renderMap();
+    
+  }
+
+  renderMap(lat,lng){
+    rm.renderMap(lat,lng);
   }
 
 }
