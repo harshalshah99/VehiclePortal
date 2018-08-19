@@ -3,35 +3,31 @@
       <i class="fa fa-desktop margin-right5" aria-hidden="true"></i> Devices
   </div>
   <div class="card-body">
-      <div class="table-responsive">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>Manufacturer</th>
-          <th>Model</th>
-          <th>OS Vendor</th>
-          <th>Serial Number</th>
-          <th>CPU Model</th>
-          <th>IMEI</th>
-          <th>SIM Seriral No</th>
-          <th>Network Operator</th>
-          <th>MAC Address</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let device of deviceData">
-          <td>{{device.manufacturer}}</td>
-          <td>{{device.model}}</td>
-          <td>{{device.os_vendor}}</td>
-          <td>{{device.serial_number}}</td>
-          <td>{{device.cpu_model}}</td>
-          <td>{{device.imei}}</td>
-          <td>{{device.sim_serial_no}}</td>
-          <td>{{device.network_operator}}</td>
-          <td>{{device.mac_address}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <div class="row">
+      <div class="col-md-6">
+          <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Manufacturer</th>
+                    <th>Model</th>
+                    <th>Show on Map</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let device of deviceData">
+                    <td>{{device.manufacturer}}</td>
+                    <td>{{device.model}}</td>
+                    <td>Show on Map</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+      </div>
+      <div class="col-md-6">
+        <app-ol-map></app-ol-map>
+        </div>
+    </div>
+    
 </div>
 </div>

@@ -19,6 +19,7 @@ import { MasterPageComponent } from './shared/master-page/master-page.component'
 import { SimplePageComponent } from './shared/simple-page/simple-page.component';
 import { DevicesComponent } from './devices/devices.component';
 import { ControlZonesComponent } from './control-zones/control-zones.component';
+import { OlMapComponent } from './shared/ol-map/ol-map.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { ControlZonesComponent } from './control-zones/control-zones.component';
     MasterPageComponent,
     SimplePageComponent,
     DevicesComponent,
-    ControlZonesComponent
+    ControlZonesComponent,
+    OlMapComponent
   ],
   imports: [
     BrowserModule,
