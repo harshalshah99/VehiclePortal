@@ -16,7 +16,6 @@ export class ParentChildCommService {
   static setLoginPreferences() {
     if (localStorage.getItem('currentUser')) {
       this.setUserLogin(true);
-      debugger;
       this.currentUserDetails = JSON.parse(localStorage.getItem('currentUser'));
     }
     else {

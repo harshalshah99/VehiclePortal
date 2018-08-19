@@ -30,7 +30,6 @@ export class UserForgotPasswordComponent implements OnInit {
     this.http.post(url, this.forgotPasswordModel)
     .pipe(
       catchError((err, caught) => {
-        debugger;
         this.spinner.hide();
         this.toastr.error(err.error);
         return throwError(

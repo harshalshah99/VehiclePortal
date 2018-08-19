@@ -34,7 +34,7 @@ var vectorLayer = new ol.layer.Vector({
         ],
         view: new ol.View({
           center: ol.proj.fromLonLat([lat,lng]),
-          zoom: 10
+          zoom: 4
         })
       });
 }
