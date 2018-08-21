@@ -14,8 +14,7 @@ export class OlMapComponent implements OnInit {
     
   }
 
-  renderMap(lat,lng){
-    rm.renderMap(lat,lng);
+  renderMapMultipleMarkers(markers,area){
+    rm.renderMapMultipleMarkers(markers,area);
   }
-
 }

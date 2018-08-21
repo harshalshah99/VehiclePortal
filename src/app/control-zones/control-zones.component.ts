@@ -18,6 +18,7 @@ export class ControlZonesComponent implements OnInit {
 
   currentUserDetails = JSON.parse(JSON.stringify(ParentChildCommService.currentUserDetails));
   controlZoneData = [];
+  markerData = [];
   constructor(private http: HttpClient,private spinner: NgxSpinnerService,private toastr: ToastrService,
     private router: Router) {
    
@@ -44,11 +45,25 @@ getControlZones() {
     this.spinner.hide();
     var response = JSON.parse(JSON.stringify(data));   
     this.controlZoneData = response; 
-    console.log(response);
+
+    for (let controlZone of  this.controlZoneData) {
+        
+      let marker = {
+        lat : controlZone.lat,
+        lng : controlZone.lng,
+      };
+
+      this.markerData.push(marker);
+  }
+
+  var area = {
+    lat:20.5937,
+    lng:78.9629,
+    zoomLevel:5
+  }
+
+  this.olMap.renderMapMultipleMarkers(this.markerData,area);
   });
 }
 
-renderMap(lat,lng){
-  this.olMap.renderMap(lat,lng);
-}
 }
