@@ -4,27 +4,27 @@
     </div>
     <div class="card-body">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-5">
         <div class="table-responsive">
       <table class="table table-bordered">
         <thead>
           <tr>
             <th>Name</th>
             <th>Radius</th>
-            <th>Show on Map</th>
+            <!-- <th>Show on Map</th> -->
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let controlZone of controlZoneData">
             <td>{{controlZone.name}}</td>
             <td>{{controlZone.radius}}</td>
-            <td><button (click)="renderMap(controlZone.lat,controlZone.lng)" class="btn btn-outline-info btn-sm">Show on Map</button></td>
+            <!-- <td><button (click)="renderMap(controlZone.lat,controlZone.lng)" class="btn btn-outline-info btn-sm">Show on Map</button></td> -->
           </tr>
         </tbody>
       </table>
     </div>
 </div>
-<div class="col-md-6">
+<div class="col-md-7">
 <app-ol-map></app-ol-map>
 </div>
 </div>

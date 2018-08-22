@@ -51,6 +51,7 @@ export class DevicesComponent implements OnInit {
         let marker = {
           lat : device.lat,
           lng : device.lng,
+          description : "<b>Manufacturer </b>" + device.manufacturer + "<br><b>Model </b>" + device.model
         };
 
         this.markerData.push(marker);
@@ -59,7 +60,7 @@ export class DevicesComponent implements OnInit {
     var area = {
       lat:20.5937,
       lng:78.9629,
-      zoomLevel:5
+      zoomLevel:6
     }
 
     this.olMap.renderMapMultipleMarkers(this.markerData,area);

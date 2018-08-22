@@ -37,7 +37,7 @@ var overlay = new ol.Overlay({
   for (let marker of markers) {
     var iconFeature = new ol.Feature({
       geometry: new ol.geom.Point(ol.proj.transform([marker.lng, marker.lat], 'EPSG:4326', 'EPSG:3857')),
-      name: 'Null Island Two'
+      description: marker.description
     });
     iconFeatures.push(iconFeature);
   }
@@ -79,12 +79,18 @@ var overlay = new ol.Overlay({
   });
 
   map.on('singleclick', function (evt) {
+    var isMarkerExists = false;
     var name = map.forEachFeatureAtPixel(evt.pixel, function (feature) {
-      return feature.get('name');
+      isMarkerExists = true;
+      return feature.get('description');
     })
-    var coordinate = evt.coordinate;
+
+    if(isMarkerExists){
+      var coordinate = evt.coordinate;
     content.innerHTML = name;
     overlay.setPosition(coordinate);
+    }
+    
   });
   map.on('pointermove', function (evt) {
     map.getTargetElement().style.cursor = map.hasFeatureAtPixel(evt.pixel) ? 'pointer' : '';

@@ -4,27 +4,27 @@
   </div>
   <div class="card-body">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-5">
           <div class="table-responsive">
               <table class="table table-bordered">
                 <thead>
                   <tr>
                     <th>Manufacturer</th>
                     <th>Model</th>
-                    <th>Show on Map</th>
+                    <!-- <th>Show on Map</th> -->
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let device of deviceData">
                     <td>{{device.manufacturer}}</td>
                     <td>{{device.model}}</td>
-                    <td><button (click)="renderMap(device.lat,device.lng)" class="btn btn-outline-info btn-sm">Show on Map</button></td>
+                    <!-- <td><button (click)="renderMap(device.lat,device.lng)" class="btn btn-outline-info btn-sm">Show on Map</button></td> -->
                   </tr>
                 </tbody>
               </table>
             </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-7">
         <app-ol-map></app-ol-map>
         </div>
     </div>

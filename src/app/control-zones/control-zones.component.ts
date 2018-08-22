@@ -51,7 +51,10 @@ getControlZones() {
       let marker = {
         lat : controlZone.lat,
         lng : controlZone.lng,
+        description : "<b>Name </b>" + controlZone.name + "<br><b>Radius </b>" + controlZone.radius
       };
+
+      
 
       this.markerData.push(marker);
   }
@@ -59,7 +62,7 @@ getControlZones() {
   var area = {
     lat:20.5937,
     lng:78.9629,
-    zoomLevel:5
+    zoomLevel:6
   }
 
   this.olMap.renderMapMultipleMarkers(this.markerData,area);
