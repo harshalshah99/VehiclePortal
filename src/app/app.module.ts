@@ -20,6 +20,8 @@ import { SimplePageComponent } from './shared/simple-page/simple-page.component'
 import { DevicesComponent } from './devices/devices.component';
 import { ControlZonesComponent } from './control-zones/control-zones.component';
 import { OlMapComponent } from './shared/ol-map/ol-map.component';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
+import { UserChangePasswordComponent } from './user/user-change-password/user-change-password.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { OlMapComponent } from './shared/ol-map/ol-map.component';
     SimplePageComponent,
     DevicesComponent,
     ControlZonesComponent,
-    OlMapComponent
+    OlMapComponent,
+    UserProfileComponent,
+    UserChangePasswordComponent
   ],
   imports: [
     BrowserModule,
