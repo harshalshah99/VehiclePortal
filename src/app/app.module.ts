@@ -22,7 +22,7 @@ import { ControlZonesComponent } from './control-zones/control-zones.component';
 import { OlMapComponent } from './shared/ol-map/ol-map.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { UserChangePasswordComponent } from './user/user-change-password/user-change-password.component';
-import { HelpComponent } from './help/help.component';
+import { InfoComponent } from './info/info.component';
 
 
 @NgModule({
@@ -41,7 +41,7 @@ import { HelpComponent } from './help/help.component';
     OlMapComponent,
     UserProfileComponent,
     UserChangePasswordComponent,
-    HelpComponent
+    InfoComponent
   ],
   imports: [
     BrowserModule,

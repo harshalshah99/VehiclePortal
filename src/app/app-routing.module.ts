@@ -8,7 +8,7 @@ import { DevicesComponent } from './devices/devices.component';
 import { ControlZonesComponent } from './control-zones/control-zones.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { UserChangePasswordComponent } from './user/user-change-password/user-change-password.component';
-import { HelpComponent } from './help/help.component';
+import { InfoComponent } from './info/info.component';
 
 const routes: Routes = [
   { path: '', component: UserLoginComponent },
@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'UserLogin', component: UserLoginComponent },
   { path: 'UserProfile', component: UserProfileComponent },
   { path: 'UserChangePassword', component: UserChangePasswordComponent },
-  { path: 'Helpdoc', component: HelpComponent }
+  { path: 'help', component: InfoComponent }
 ];
 
 @NgModule({
