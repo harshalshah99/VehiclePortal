@@ -34,11 +34,11 @@ export class UserChangePasswordComponent implements OnInit {
     }
 
     var params = {
-      email: this.currentUserDetails.user.email,
+      uid: this.currentUserDetails.user.uid,
       new_password: this.changePasswordModel.new_password, old_password: this.changePasswordModel.old_password
     };
 
-    var url = global.BASE_API_URL + "user/reset_user_password";
+    var url = global.BASE_API_URL + "user/change_password";
     this.spinner.show();
     this.http.post(url, params)
       .pipe(

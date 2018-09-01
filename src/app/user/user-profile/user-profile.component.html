@@ -3,12 +3,12 @@
       <i class="fa fa-user-md margin-right5" aria-hidden="true"></i> My Profile
   </div>
   <div class="card-body">
-    <form (ngSubmit)="onSubmit()" #userRegistrationForm="ngForm" ngNativeValidate>
+    <form (ngSubmit)="onSubmit()" #profileForm="ngForm" ngNativeValidate>
       
       <div class="form-group">
         <div class="form-label-group">
             
-          <input type="text" class="form-control" id="first_name" placeholder="First Name" [(ngModel)]="userRegistrationModel.first_name" name="first_name"
+          <input type="text" class="form-control" id="first_name" placeholder="First Name" [(ngModel)]="profileModel.first_name" name="first_name"
           required maxlength="100">
           <label for="first_name">First Name</label>
         </div>
@@ -16,7 +16,7 @@
       <div class="form-group">
         <div class="form-label-group">
             
-          <input type="text" class="form-control" id="last_name" placeholder="Last Name" [(ngModel)]="userRegistrationModel.last_name" name="last_name" required
+          <input type="text" class="form-control" id="last_name" placeholder="Last Name" [(ngModel)]="profileModel.last_name" name="last_name" required
           maxlength="100">
           <label for="last_name">Last Name</label>
         </div>
@@ -24,17 +24,17 @@
       <div class="form-group">
           <div class="form-label-group">
               
-              <input type="number" class="form-control" id="mobile_no" placeholder="Mobile" [(ngModel)]="userRegistrationModel.mobile_no" name="mobile_no" required maxlength="20">        
+              <input type="number" class="form-control" id="mobile_no" placeholder="Mobile" [(ngModel)]="profileModel.mobile_no" name="mobile_no" required maxlength="20">        
               <label for="mobile_no">Mobile</label>
           </div>
         </div>
-      <div class="form-group">
+      <!-- <div class="form-group">
         <div class="form-label-group">
             
             <input type="email" class="form-control" id="email" placeholder="Email" [(ngModel)]="userRegistrationModel.email" name="email" required maxlength="200">
             <label for="email">Email</label>
         </div>
-      </div>
+      </div> -->
         <button type="submit" class="btn btn-primary" >Update Profile</button>
     </form>
   </div>

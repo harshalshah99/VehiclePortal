@@ -15,3 +15,7 @@
 }
 
 .curson-pointer {cursor: pointer !important;}
+
+.nav-link :hover{
+    cursor: pointer !important;
+}
