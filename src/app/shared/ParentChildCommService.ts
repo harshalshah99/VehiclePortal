@@ -6,6 +6,7 @@ export class ParentChildCommService {
 
   static isUserLogin = new Subject<boolean>();
   static currentUserDetails = {};
+  static devices = [];
 
   // Service message commands
   static setUserLogin(val: boolean) {

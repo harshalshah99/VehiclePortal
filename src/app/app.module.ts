@@ -23,6 +23,10 @@ import { OlMapComponent } from './shared/ol-map/ol-map.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { UserChangePasswordComponent } from './user/user-change-password/user-change-password.component';
 import { InfoComponent } from './info/info.component';
+import { DeviceDetailsComponent } from './devices/device-details/device-details.component';
+import { BillingPlansComponent } from './settings/billing-plans/billing-plans.component';
+import { BillingComponent } from './settings/billing/billing.component';
+import { EmailNotificationsComponent } from './settings/email-notifications/email-notifications.component';
 
 
 @NgModule({
@@ -41,7 +45,11 @@ import { InfoComponent } from './info/info.component';
     OlMapComponent,
     UserProfileComponent,
     UserChangePasswordComponent,
-    InfoComponent
+    InfoComponent,
+    DeviceDetailsComponent,
+    BillingPlansComponent,
+    BillingComponent,
+    EmailNotificationsComponent
   ],
   imports: [
     BrowserModule,

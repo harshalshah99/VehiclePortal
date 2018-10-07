@@ -1,0 +1,34 @@
+<div class="card">
+  <div class="card-header">
+      <i class="fa fa-desktop margin-right5" aria-hidden="true"></i> Billing Plans
+  </div>
+  <div class="card-body">
+      <div class="row">
+          <div class="col-md-12">
+      <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price / Month</th>
+          <th>Device Limit</th>
+          <th>Control Zone Limit</th>
+          <!-- <th>Show on Map</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let billingPlan of billingPlansData">
+          <td>{{billingPlan.name}}</td>
+          <td>{{billingPlan.price}}</td>
+          <td>{{billingPlan.device_limit}}</td>
+          <td>{{billingPlan.geofence_limit}}</td>
+          <!-- <td><button (click)="renderMap(controlZone.lat,controlZone.lng)" class="btn btn-outline-info btn-sm">Show on Map</button></td> -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+</div>
+</div>

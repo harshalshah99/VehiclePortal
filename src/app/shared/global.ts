@@ -1,7 +1,8 @@
 
 
 //test URL :
-export const BASE_API_URL='http://54.245.75.115/services/';
+//export const BASE_API_URL='http://54.245.75.115/services/';
+export const BASE_API_URL='http://54.187.115.66/services/';
 
 //live URL
 //export const BASE_API_URL='http://mdsvc.gearhostpreview.com/api/';
