@@ -1,4 +1,32 @@
-<p>
-  device-details works!
-  {{deviceId}}
-</p>
+<div class="card">
+  <div class="card-header">
+      <i class="fa fa-desktop margin-right5" aria-hidden="true"></i> Device Details
+      <span class="float-sm-right">
+        <a routerLink="/devices">
+          Back</a>
+      </span>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-5">
+        <dl class="row">        
+          <dt class="col-sm-5">Manufacturer</dt>
+          <dd class="col-sm-7">{{deviceDetail.manufacturer}}</dd>
+        
+          <dt class="col-sm-5">Model</dt>
+          <dd class="col-sm-7">{{deviceDetail.model}}</dd>
+        
+          <dt class="col-sm-5 text-truncate">OS</dt>
+          <dd class="col-sm-7">F{{deviceDetail.os_vendor}}</dd>
+        
+          <dt class="col-sm-5 text-truncate">OS Version</dt>
+          <dd class="col-sm-7">{{deviceDetail.os_version}}</dd>
+        </dl>
+      </div>
+      <div class="col-md-7">
+          <app-ol-map></app-ol-map>
+        </div>
+    </div>
+    
+</div>
+</div>

@@ -1,3 +1,55 @@
-<p>
-  email-notifications works!
-</p>
+<div class="card">
+  <div class="card-header">
+      <i class="fa fa-desktop margin-right5" aria-hidden="true"></i> Email Notifications
+  </div>
+  <div class="card-body">
+      <div class="row">
+          <div class="col-md-6">
+      <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Event Notification</th>
+          <th>Is Subscribed?</th>
+          <!-- <th>Show on Map</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Entered geofence </td>
+          <td><input type="checkbox" [checked]="IsEnteredGeofence.checked" class="form-check-input" /></td>          
+        </tr>
+        <tr>
+          <td>Exited geofence </td>
+          <td><input type="checkbox" [checked]="IsExitedGeofence.checked" class="form-check-input" /></td>          
+        </tr>
+        <tr>
+          <td>Device boot  </td>
+          <td><input type="checkbox" [checked]="IsDeviceBoot.checked" class="form-check-input" /></td>          
+        </tr>
+        <tr>
+          <td>Device shutdown </td>
+          <td><input type="checkbox" [checked]="IsDeviceShutdown.checked" class="form-check-input" /></td>          
+        </tr>
+        <tr>
+          <td>SIM changed </td>
+          <td><input type="checkbox" [checked]="IsSIMChanged.checked" class="form-check-input" /></td>          
+        </tr>
+        <tr>
+          <td>Device not seen </td>
+          <td><input type="checkbox" [checked]="IsDeviceNotSeen.checked" class="form-check-input" /></td>          
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+  <br/>
+  <button class="btn btn-primary" (click)="savePreferences()">Save Preferences</button>
+</div>
+<div class="col-md-6">
+
+</div>
+</div>
+
+</div>
+</div>
