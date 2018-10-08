@@ -20,7 +20,7 @@ export class EmailNotificationsComponent implements OnInit {
   IsEnteredGeofence = { checked : false, value : 1 };
   IsExitedGeofence  = { checked : false, value : 2 };
   IsDeviceBoot  = { checked : false, value : 4 };
-  IsDeviceShutdown  = { checked : true, value : 8 };
+  IsDeviceShutdown  = { checked : false, value : 8 };
   IsSIMChanged  = { checked : false, value : 16 };
   IsDeviceNotSeen   = { checked : false, value : 32 };
 
@@ -32,6 +32,7 @@ export class EmailNotificationsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.setPreferences(10);
   }
 
   savePreferences(){
@@ -94,8 +95,58 @@ export class EmailNotificationsComponent implements OnInit {
     }
   }
 
-  setPreferences(){
+  setPreferences(preference){
+    var list = [];
+    for(var i=1;i<=preference;i=i+i){
+        list.push(i);
+      }
     
+      var selectedList = [list[list.length-1]];
+      
+      if(selectedList[0] != preference)
+      {
+        var matchTotal = selectedList[0];
+     
+          for(i=list.length-2;i>=0;i--){
+        
+              var totalWithPrev = matchTotal + list[i];
+              
+              if(totalWithPrev <= preference)
+              {
+              matchTotal = totalWithPrev;
+                selectedList.push(list[i]);
+              }
+              
+  
+          }
+     }
+     
+     
+      if(selectedList.includes(this.IsEnteredGeofence.value))
+      {
+        this.IsEnteredGeofence.checked = true;
+      }
+      if(selectedList.includes(this.IsExitedGeofence.value))
+      {
+        this.IsExitedGeofence.checked = true;
+      }
+      if(selectedList.includes(this.IsDeviceBoot.value))
+      {
+        this.IsDeviceBoot.checked = true;
+      }
+      if(selectedList.includes(this.IsDeviceShutdown.value))
+      {
+        this.IsDeviceShutdown.checked = true;
+      }
+      if(selectedList.includes(this.IsSIMChanged.value))
+      {
+        this.IsSIMChanged.checked = true;
+      }
+      if(selectedList.includes(this.IsDeviceNotSeen.value))
+      {
+        this.IsDeviceNotSeen.checked = true;
+      }
+      
   }
 
 }

@@ -19,6 +19,7 @@ const routes: Routes = [
   { path: 'home', component: DevicesComponent },
   { path: 'devices', component: DevicesComponent },
   { path: 'devices/details/:id', component: DeviceDetailsComponent },
+  { path: 'home/details/:id', component: DeviceDetailsComponent },
   { path: 'controlZones', component: ControlZonesComponent },
   { path: 'UserForgotPassword', component: UserForgotPasswordComponent },
   { path: 'UserRegister', component: UserRegisterComponent },

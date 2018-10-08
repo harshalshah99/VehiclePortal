@@ -13,16 +13,17 @@
           <th>Price / Month</th>
           <th>Device Limit</th>
           <th>Control Zone Limit</th>
+          <th>Select Plan</th>
           <!-- <th>Show on Map</th> -->
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let billingPlan of billingPlansData">
+        <tr *ngFor="let billingPlan of billingPlansData" [ngClass]="{'table-primary': (billingPlan.plan_id == selectedPlanId)}">
           <td>{{billingPlan.name}}</td>
           <td>{{billingPlan.price}}</td>
           <td>{{billingPlan.device_limit}}</td>
           <td>{{billingPlan.geofence_limit}}</td>
-          <!-- <td><button (click)="renderMap(controlZone.lat,controlZone.lng)" class="btn btn-outline-info btn-sm">Show on Map</button></td> -->
+          <td><button (click)="selectBillingPlan(billingPlan.plan_id)" class="btn btn-outline-info btn-sm">Select Plan</button></td>
         </tr>
       </tbody>
     </table>
