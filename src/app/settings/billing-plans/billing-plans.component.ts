@@ -17,7 +17,7 @@ export class BillingPlansComponent implements OnInit {
 
   currentUserDetails = JSON.parse(JSON.stringify(ParentChildCommService.currentUserDetails));
   billingPlansData = [];
-  selectedPlanId = 2;
+  selectedPlanId = 0;
   constructor(private http: HttpClient,private spinner: NgxSpinnerService,private toastr: ToastrService,
     private router: Router) {
    
@@ -43,10 +43,34 @@ getBillingPlans() {
     this.spinner.hide();
     var response = JSON.parse(JSON.stringify(data));   
     this.billingPlansData = response; 
+    this.getBillingPlan();
   });
 }
 
-selectBillingPlan(plan_id){
+getBillingPlan(){
+  var url = global.BASE_API_URL + "user/verify_user";
+  var params = { uid : this.currentUserDetails.user.uid };
+  this.spinner.show();
+  this.http.post(url, params)
+    .pipe(
+      catchError((err, caught) => {
+        this.spinner.hide();
+        this.toastr.error(err.error);
+        return throwError(
+          'Something bad happened; please try again later.');
+      })
+    )
+    .subscribe((data: Response) => {
+      var response = JSON.parse(JSON.stringify(data));
+
+      this.selectedPlanId = response.billing_plan_id;
+      
+      this.spinner.hide();
+
+    });
+}
+
+saveBillingPlan(plan_id){
   var url = global.BASE_API_URL + "user/update_user";
   var params = { uid : this.currentUserDetails.user.uid, plan_id: plan_id };
   this.spinner.show();
@@ -73,7 +97,7 @@ selectBillingPlan(plan_id){
       else {
         this.toastr.error('Something bad happened; please try again later.');
       }
-
+      this.getBillingPlan();
     });
 }
 

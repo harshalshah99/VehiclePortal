@@ -32,7 +32,30 @@ export class EmailNotificationsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.setPreferences(10);
+    this.getPreferencesAPI();
+  }
+
+  getPreferencesAPI(){
+    var url = global.BASE_API_URL + "user/verify_user";
+    var params = { uid : this.currentUserDetails.user.uid };
+    this.spinner.show();
+    this.http.post(url, params)
+      .pipe(
+        catchError((err, caught) => {
+          this.spinner.hide();
+          this.toastr.error(err.error);
+          return throwError(
+            'Something bad happened; please try again later.');
+        })
+      )
+      .subscribe((data: Response) => {
+        var response = JSON.parse(JSON.stringify(data));
+
+        this.setPreferences(response.notifications);
+        
+        this.spinner.hide();
+
+      });
   }
 
   savePreferences(){
