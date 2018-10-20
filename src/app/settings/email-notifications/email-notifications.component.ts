@@ -86,7 +86,7 @@ export class EmailNotificationsComponent implements OnInit {
         else {
           this.toastr.error('Something bad happened; please try again later.');
         }
-
+        this.getPreferencesAPI();
       });
   }
 

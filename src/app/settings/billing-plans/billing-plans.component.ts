@@ -71,8 +71,8 @@ getBillingPlan(){
 }
 
 saveBillingPlan(plan_id){
-  var url = global.BASE_API_URL + "user/update_user";
-  var params = { uid : this.currentUserDetails.user.uid, plan_id: plan_id };
+  var url = global.BASE_API_URL + "billing/update_billing_plan";
+  var params = { uid : this.currentUserDetails.user.uid, billing_plan_id: plan_id };
   this.spinner.show();
   this.http.post(url, params)
     .pipe(

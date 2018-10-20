@@ -17,4 +17,11 @@ export class OlMapComponent implements OnInit {
   renderMapMultipleMarkers(markers,area){
     rm.renderMapMultipleMarkers(markers,area);
   }
+
+   getLatLongFromAddress(address, fn) {
+
+    rm.getLatLongFromAddress(address, function(latLng){
+        fn(latLng);
+    });
+  }
 }

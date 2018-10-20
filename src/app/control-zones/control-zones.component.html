@@ -5,12 +5,17 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-5">
+                <div>
+                    <button routerLink="addedit/0" class="btn"><i class="fa fa-plus" aria-hidden="true"></i> ADD</button>
+                  </div>
+                  <br/>
         <div class="table-responsive">
       <table class="table table-bordered">
         <thead>
           <tr>
             <th>Name</th>
             <th>Radius</th>
+            <th>Edit</th>
             <!-- <th>Show on Map</th> -->
           </tr>
         </thead>
@@ -19,6 +24,7 @@
             <td>{{controlZone.name}}</td>
             <td>{{controlZone.radius}}</td>
             <!-- <td><button (click)="renderMap(controlZone.lat,controlZone.lng)" class="btn btn-outline-info btn-sm">Show on Map</button></td> -->
+            <td><a routerLink="addedit/{{controlZone.unique_id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
           </tr>
         </tbody>
       </table>

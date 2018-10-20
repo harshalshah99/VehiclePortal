@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { DevicesComponent } from './devices/devices.component';
 import { DeviceDetailsComponent } from './devices/device-details/device-details.component';
 import { ControlZonesComponent } from './control-zones/control-zones.component';
+import { ControlZonesAddEditComponent } from './control-zones/control-zones-add-edit/control-zones-add-edit.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { UserChangePasswordComponent } from './user/user-change-password/user-change-password.component';
 import { InfoComponent } from './info/info.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'devices/details/:id', component: DeviceDetailsComponent },
   { path: 'home/details/:id', component: DeviceDetailsComponent },
   { path: 'controlZones', component: ControlZonesComponent },
+  { path: 'controlZones/addedit/:id', component: ControlZonesAddEditComponent },
   { path: 'UserForgotPassword', component: UserForgotPasswordComponent },
   { path: 'UserRegister', component: UserRegisterComponent },
   { path: 'UserLogin', component: UserLoginComponent },

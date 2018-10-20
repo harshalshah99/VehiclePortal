@@ -27,6 +27,7 @@ import { DeviceDetailsComponent } from './devices/device-details/device-details.
 import { BillingPlansComponent } from './settings/billing-plans/billing-plans.component';
 import { BillingComponent } from './settings/billing/billing.component';
 import { EmailNotificationsComponent } from './settings/email-notifications/email-notifications.component';
+import { ControlZonesAddEditComponent } from './control-zones/control-zones-add-edit/control-zones-add-edit.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { EmailNotificationsComponent } from './settings/email-notifications/emai
     DeviceDetailsComponent,
     BillingPlansComponent,
     BillingComponent,
-    EmailNotificationsComponent
+    EmailNotificationsComponent,
+    ControlZonesAddEditComponent
   ],
   imports: [
     BrowserModule,

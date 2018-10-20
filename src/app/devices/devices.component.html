@@ -19,7 +19,7 @@
                   <tr *ngFor="let device of deviceData">
                     <td>{{device.manufacturer}}</td>
                     <td>{{device.model}}</td>
-                    <td><a routerLink="details/{{device.unique_id}}">Details</a></td>
+                    <td><a routerLink="details/{{device.unique_id}}"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
                     <!-- <td><button (click)="renderMap(device.lat,device.lng)" class="btn btn-outline-info btn-sm">Show on Map</button></td> -->
                   </tr>
                 </tbody>

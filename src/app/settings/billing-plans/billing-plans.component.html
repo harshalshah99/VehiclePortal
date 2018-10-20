@@ -18,7 +18,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let billingPlan of billingPlansData" [ngClass]="{'table-primary': (billingPlan.plan_id == selectedPlanId)}">
+        <tr *ngFor="let billingPlan of billingPlansData" [ngClass]="{'highlight-bg': (billingPlan.plan_id == selectedPlanId)}">
           <td>{{billingPlan.name}}</td>
           <td>{{billingPlan.price}}</td>
           <td>{{billingPlan.device_limit}}</td>

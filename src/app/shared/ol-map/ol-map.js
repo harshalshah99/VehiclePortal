@@ -1,3 +1,22 @@
+export function getLatLongFromAddress(address,callback) {
+  var geocoder = new google.maps.Geocoder();
+  
+  if (geocoder) {
+      geocoder.geocode({
+          'address': address
+      }, function (results, status) {
+        
+          if (status == google.maps.GeocoderStatus.OK) {
+              //console.log(results[0]);
+              var latLng = {};            
+              latLng.lat = results[0].geometry.location.lat();
+              latLng.lng = results[0].geometry.location.lng();
+              callback(latLng);
+
+          }
+      });
+  }
+}
 export function renderMapMultipleMarkers(markers,area) {
 
   document.getElementById('olMap').innerHTML = null;

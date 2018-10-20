@@ -15,15 +15,44 @@ import { ParentChildCommService } from './../../shared/ParentChildCommService';
 })
 export class UserProfileComponent implements OnInit {
   currentUserDetails = JSON.parse(JSON.stringify(ParentChildCommService.currentUserDetails));
-  profileModel = {
-    uid: this.currentUserDetails.user.uid,
-    mobile_no: this.currentUserDetails.user.mobile_no,
-    first_name: this.currentUserDetails.user.first_name,
-    last_name: this.currentUserDetails.user.last_name
-  }
+  // profileModel = {
+  //   uid: this.currentUserDetails.user.uid,
+  //   mobile_no: this.currentUserDetails.user.mobile_no,
+  //   first_name: this.currentUserDetails.user.first_name,
+  //   last_name: this.currentUserDetails.user.last_name
+  // }
+  profileModel = {}
   constructor(private http: HttpClient, private spinner: NgxSpinnerService, private toastr: ToastrService,
     private router: Router) {
 
+  }
+
+  getProfile(){
+    var url = global.BASE_API_URL + "user/verify_user";
+    var params = { uid : this.currentUserDetails.user.uid };
+    this.spinner.show();
+    this.http.post(url, params)
+      .pipe(
+        catchError((err, caught) => {
+          this.spinner.hide();
+          this.toastr.error(err.error);
+          return throwError(
+            'Something bad happened; please try again later.');
+        })
+      )
+      .subscribe((data: Response) => {
+        var response = JSON.parse(JSON.stringify(data));
+
+        this.profileModel = {
+          uid: response.uid,
+          mobile_no: response.mobile_no,
+          first_name: response.first_name,
+          last_name: response.last_name
+        }
+        
+        this.spinner.hide();
+
+      });
   }
 
   onSubmit() {
@@ -54,12 +83,12 @@ export class UserProfileComponent implements OnInit {
         else {
           this.toastr.error('Something bad happened; please try again later.');
         }
-
+          
       });
   }
 
   ngOnInit() {
-
+    this.getProfile();
 
   }
 
