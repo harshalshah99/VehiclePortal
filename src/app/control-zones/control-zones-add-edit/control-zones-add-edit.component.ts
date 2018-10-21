@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewContainerRef, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
@@ -20,18 +20,31 @@ export class ControlZonesAddEditComponent implements OnInit {
   controlZone = {
     name:'',
     radius:'',
-    address:'Ahmedabad',
-    lat:0,
-    lng:0
+    address:'',
+    lat:0.0,
+    lng:0.0,
+    unique_id:''
   };
   markerData = [];
+  controlZoneId: string;
+  mode = 'EDIT';
   constructor(private http: HttpClient,private spinner: NgxSpinnerService,private toastr: ToastrService,
-    private router: Router) {
+    private router: Router, private route: ActivatedRoute) {
    
  }
  @ViewChild(OlMapComponent) olMap:OlMapComponent;
  ngOnInit() {
-  this.getControlZones();
+  this.controlZoneId = this.route.snapshot.paramMap.get('id');
+
+  if(this.controlZoneId == '0')
+  {
+    this.mode = 'ADD';
+  }
+  else{
+    this.mode = 'EDIT';
+  }
+
+  this.getControlZone();
 }
 
 getLatLongFromAddress(){
@@ -40,26 +53,47 @@ getLatLongFromAddress(){
   
   //var latLng =  JSON.parse(JSON.stringify(this.olMap.getLatLongFromAddress(address))); 
   var that = this;
-  this.olMap.getLatLongFromAddress(address,function(latLng){
-    if(latLng){
-      var jLatLng = JSON.parse(JSON.stringify(latLng)); 
-      that.controlZone.lat = jLatLng.lat;
-      that.controlZone.lng = jLatLng.lng;
-    }
-  }); 
+  this.spinner.show();
+  this.olMap.getLatLongFromAddress(address,function(data){
+    that.spinner.hide();
+    if(data){
+     if(data.length > 0)
+     {
+      that.controlZone.lat = parseFloat(data[0].lat);
+      that.controlZone.lng = parseFloat(data[0].lon);
 
+      let marker = {
+        lat : that.controlZone.lat,
+        lng : that.controlZone.lng,
+        description : "<b>Name </b>" + that.controlZone.name + "<br><b>Radius </b>" + that.controlZone.radius
+      }
+      
+       that.markerData = [];
+    that.markerData.push(marker);
   
 
-//console.log(latLng);
+        var area = {
+          lat:20.5937,
+          lng:78.9629,
+          zoomLevel:6
+        }
 
-  // this.controlZone.lat = latLng.lat;
-  // this.controlZone.lat = latLng.lng;
+        that.olMap.renderMapMultipleMarkers(that.markerData,area);
+    //that.getLatLongFromAddressTemp(marker);
+      that.toastr.success('Latitude Longitude for given address found and pointed to map.');
+     }
+     else{
+      that.toastr.error('Invalid address OR Something bad happened; please try again later.');
+     }
+    
+    }
+  }); 
   
 }
 
-getControlZones() {
-  var url = global.BASE_API_URL + "geofence/get_geofences";
-  var params = { uid : this.currentUserDetails.user.uid };
+getControlZone() {
+  var url = global.BASE_API_URL + "geofence/get_geofence";
+  var params = { uid : this.currentUserDetails.user.uid, unique_id : this.controlZoneId };
   this.spinner.show();
   this.http.post(url, params)
   .pipe(
@@ -73,7 +107,8 @@ getControlZones() {
   .subscribe((data: Response) => {
     this.spinner.hide();
     var response = JSON.parse(JSON.stringify(data));   
-    this.controlZone = response[0]; 
+    this.controlZone = response;
+   
 
     
         
@@ -92,9 +127,33 @@ getControlZones() {
     lng:78.9629,
     zoomLevel:6
   }
-
+ 
   this.olMap.renderMapMultipleMarkers(this.markerData,area);
   });
 }
 
+getLatLongFromAddressTemp(marker2){
+  // let marker = {
+  //   lat : 22.3511148,
+  //   lng : 78.6677428,
+  //   description : "<b>Name </b>" + this.controlZone.name + "<br><b>Radius </b>" + this.controlZone.radius
+  // }
+
+  let marker = {
+    lat : 22.3045769,
+    lng : 70.802161,
+    description : "<b>Name </b>" + this.controlZone.name + "<br><b>Radius </b>" + this.controlZone.radius
+  }
+  
+this.markerData = [];
+  this.markerData.push(marker);
+
+
+          var area = {
+          lat:20.5937,
+          lng:78.9629,
+          zoomLevel:6
+          }
+      this.olMap.renderMapMultipleMarkers(this.markerData,area);
+}
 }

@@ -1,13 +1,28 @@
 <div class="card">
     <div class="card-header">
-        <i class="fa fa-desktop margin-right5" aria-hidden="true"></i> Control Zone Edit
+        <i class="fa fa-desktop margin-right5" aria-hidden="true"></i> Control Zone {{mode}}
     </div>
     <div class="card-body">
         <div class="row">
             <div class="col-md-5">
        
                 <form (ngSubmit)="onSubmit()" #controlZoneForm="ngForm" ngNativeValidate>
-      
+                    <div class="form-group">
+                        <div class="form-label-group">
+                            
+                          <input type="text" class="form-control" id="name" placeholder="Name" [(ngModel)]="controlZone.name" name="name"
+                          required maxlength="100">
+                          <label for="name">Name</label>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="form-label-group">
+                            
+                          <input type="number" class="form-control" id="radius" placeholder="Radius" [(ngModel)]="controlZone.radius" name="radius" required
+                          max="100000" min="-100000">
+                          <label for="radius">Radius</label>
+                        </div>
+                      </div>
                     <div class="form-group">
                       <div class="form-label-group">
                           
@@ -31,7 +46,7 @@
                   </form>
 </div>
 <div class="col-md-7">
-<app-ol-map></app-ol-map>
+<app-ol-map ></app-ol-map>
 </div>
 </div>
 

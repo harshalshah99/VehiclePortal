@@ -1,25 +1,68 @@
 export function getLatLongFromAddress(address,callback) {
-  var geocoder = new google.maps.Geocoder();
   
-  if (geocoder) {
-      geocoder.geocode({
-          'address': address
-      }, function (results, status) {
-        
-          if (status == google.maps.GeocoderStatus.OK) {
-              //console.log(results[0]);
-              var latLng = {};            
-              latLng.lat = results[0].geometry.location.lat();
-              latLng.lng = results[0].geometry.location.lng();
-              callback(latLng);
+  var url = encodeURI("https://nominatim.openstreetmap.org/?format=json&addressdetails=1&q=" + address + "&format=json&limit=1");
 
-          }
-      });
-  }
+      $.get(url, function(data, status){
+          callback(data);      
+    });
+
 }
 export function renderMapMultipleMarkers(markers,area) {
 
-  document.getElementById('olMap').innerHTML = null;
+  document.getElementById('olMap').innerHTML = `<div id="popup" class="ol-popup">
+  <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+  <div id="popup-content"></div>
+ </div>
+ <style>
+ .map {
+  height: 450px;
+  width: 100%;
+  }
+  .ol-popup {
+  position: absolute;
+  background-color: white;
+  -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+  filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  bottom: 12px;
+  left: -50px;
+  min-width: 150px;
+  }
+  .ol-popup:after, .ol-popup:before {
+  top: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  }
+  .ol-popup:after {
+  border-top-color: white;
+  border-width: 10px;
+  left: 48px;
+  margin-left: -10px;
+  }
+  .ol-popup:before {
+  border-top-color: #cccccc;
+  border-width: 11px;
+  left: 48px;
+  margin-left: -11px;
+  }
+  .ol-popup-closer {
+  text-decoration: none;
+  position: absolute;
+  top: 2px;
+  right: 8px;
+  }
+  .ol-popup-closer:after {
+  content: "✖";
+  }
+ </style>
+ 
+ `;
 
  /**
  * Elements that make up the popup.
@@ -27,6 +70,7 @@ export function renderMapMultipleMarkers(markers,area) {
 var container = document.getElementById('popup');
 var content = document.getElementById('popup-content');
 var closer = document.getElementById('popup-closer');
+
 
 
 /**
@@ -71,7 +115,6 @@ var overlay = new ol.Overlay({
       src: './../../../assets/images/mapmarker.png'
     }))
   });
-  console.log(iconFeatures)
 
   var vectorSource = new ol.source.Vector({
     features: iconFeatures
